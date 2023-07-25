@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="89" height="89" viewBox="0 0 89 89">
+  <g id="Reward-icon" transform="translate(-1005.759 -2865.759)">
+    <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(1005.759 2865.759)" fill="none" stroke="#60af6f" stroke-width="2">
+      <circle cx="44.5" cy="44.5" r="44.5" stroke="none"/>
+      <circle cx="44.5" cy="44.5" r="43.5" fill="none"/>
+    </g>
+    <g id="rewards-trophy" transform="translate(1024.342 2885.139)">
+      <g id="Frames-24px" transform="translate(0 0)">
+        <rect id="Rectangle_16" data-name="Rectangle 16" width="51" height="51" transform="translate(0.418 -0.38)" fill="none"/>
+      </g>
+      <g id="Outline" transform="translate(4.116 4.116)">
+        <path id="Path_9" data-name="Path 9" d="M42.665,4.14H35.649A4.267,4.267,0,0,0,31.963,2H14.841a4.267,4.267,0,0,0-3.685,2.14H4.14A2.141,2.141,0,0,0,2,6.28v6.506A6.387,6.387,0,0,0,4.41,17.8l8.942,7.153a12.838,12.838,0,0,0,7.91,4.679V34.1h-4.28a2.141,2.141,0,0,0-2.14,2.14v4.28H12.7V44.8H34.1v-4.28h-2.14v-4.28a2.141,2.141,0,0,0-2.14-2.14h-4.28V29.631a12.828,12.828,0,0,0,7.91-4.679L42.4,17.8a6.387,6.387,0,0,0,2.408-5.01V6.28A2.141,2.141,0,0,0,42.665,4.14ZM27.683,40.524H19.122v-2.14h8.561ZM7.085,14.458a2.134,2.134,0,0,1-.8-1.672V8.421h4.28v8.561c0,.09.011.178.013.268ZM23.4,25.543a8.57,8.57,0,0,1-8.561-8.561V6.28H31.963v10.7A8.57,8.57,0,0,1,23.4,25.543ZM40.524,12.787a2.138,2.138,0,0,1-.8,1.672l-3.491,2.793c0-.092.013-.18.013-.27V8.421h4.28Z" transform="translate(-2 -2)" fill="#60af6f"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="89" height="89" viewBox="0 0 89 89">
+  <g id="Members-icon" transform="translate(-1005.759 -2865.759)">
+    <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(1005.759 2865.759)" fill="none" stroke="#60af6f" stroke-width="2">
+      <circle cx="44.5" cy="44.5" r="44.5" stroke="none"/>
+      <circle cx="44.5" cy="44.5" r="43.5" fill="none"/>
+    </g>
+    <g id="people-group" transform="translate(1029.118 2886.167)">
+      <path id="Path_12" data-name="Path 12" d="M24.842,26.412l-1.191-9.526A5.578,5.578,0,0,0,18.116,12h-4.1a5.578,5.578,0,0,0-5.534,4.886L7.295,26.412a3.718,3.718,0,0,0,3.69,4.18H21.152A3.719,3.719,0,0,0,24.842,26.412Z" transform="translate(5.073 8.592)" fill="none" stroke="#60af6f" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+      <circle id="Ellipse_3" data-name="Ellipse 3" cx="5.578" cy="5.578" r="5.578" transform="translate(15.564 2)" fill="none" stroke="#60af6f" stroke-width="3"/>
+      <circle id="Ellipse_4" data-name="Ellipse 4" cx="3.718" cy="3.718" r="3.718" transform="translate(2.55 11.296)" fill="none" stroke="#60af6f" stroke-width="3"/>
+      <circle id="Ellipse_5" data-name="Ellipse 5" cx="3.718" cy="3.718" r="3.718" transform="translate(32.297 11.296)" fill="none" stroke="#60af6f" stroke-width="3"/>
+      <path id="Path_13" data-name="Path 13" d="M6.268,14H5.7a3.718,3.718,0,0,0-3.668,3.107l-.62,3.718a3.718,3.718,0,0,0,3.668,4.33h6.766" transform="translate(0 10.31)" fill="none" stroke="#60af6f" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+      <path id="Path_14" data-name="Path 14" d="M22.578,14h.568a3.718,3.718,0,0,1,3.668,3.107l.62,3.718a3.718,3.718,0,0,1-3.668,4.33H17" transform="translate(13.437 10.31)" fill="none" stroke="#60af6f" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    </g>
+  </g>
+</svg>
