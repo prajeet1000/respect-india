@@ -3,4 +3,4 @@ services :
   web :
      image : prajeetkumar1000/my-pipeline:latest
      ports :
-         - "8000:8000"
+         - "80:80"
