@@ -37,7 +37,7 @@ pipeline {
             steps {
                 // echo "Deploying the container"
                 script {
-                    def sshCommand = "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i "/.sshkey/private-key/project01.pem" ubuntu@ec2-3-111-245-246.ap-south-1.compute.amazonaws.com"
+                    def sshCommand = "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i '/.sshkey/private-key/project01.pem' ubuntu@ec2-3-111-245-246.ap-south-1.compute.amazonaws.com"
                     withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
                     sh "${sshCommand} 'sudo docker build -t my-testing-image .'"
                     sh "${sshCommand} 'sudo docker tag my-testing-image ${env.dockerHubUser}/my-testing-image:latest'"
