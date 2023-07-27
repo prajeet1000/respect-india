@@ -1,6 +1,6 @@
 version : "3.3"
 services :
   web :
-     image : prajeetkumar1000/my-pipeline:latest
+     image : prajeetkumar1000/my-testing-image:latest
      ports :
          - "80:80"
