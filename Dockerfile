@@ -20,4 +20,4 @@ RUN cp -r respect-india/* /var/www/html/
 EXPOSE 80
 
 # Start Apache and Python backend when the container starts
-CMD service apache2 start 
+RUN service apache2 start 
