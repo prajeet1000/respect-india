@@ -1,45 +1,45 @@
 pipeline {
     agent any
+	
 	stages {
-	    stage('Github CheckOut') {
+	    stage('GitHUB CheckOut') {
 		    steps {
-			   checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/prajeet1000/respect-india.git']]])
-			}
-		}
-        stage('SonarQube Code Quality') {
-            steps {
-                    withSonarQubeEnv('sonarqube server') {
-                sh 'mvn sonar:sonar'
-                }
+                echo "Cloning the code"
+                git url:"https://github.com/prajeet1000/respect-india.git", branch: "master"
             }
         }
-        stage ('maven Clean and Install'){
+		stage ('SONARQUBE Code-Quality'){
+            steps {
+                    withSonarQubeEnv('sonarqube server') {
+                sh 'mvn sonar:sonar'}
+            }
+        }
+        stage('MAVEN build') {
             steps {
                 sh 'mvn clean install'
             }
         }
-        stage("Docker Image-Build"){
+        stage("DOCKLER Build"){
             steps {
                 echo "Building the image"
-                sh "docker build -t my-test-image ."
+                sh "docker build -t my-testing-app ."
             }
         }
-        stage('Docker-depoy') {
+        stage("IMAGE-Push to DOCKERHUB"){
             steps {
-                // echo "Deploying the container"
-                script {
-                    def sshCommand = "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i '/.sshkey/private-key/project01.pem' jenkins@ec2-65.2.140.151.ap-south-1.compute.amazonaws.com"
-                    withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
-                    sh "${sshCommand} 'sudo docker build -t my-testing-image .'"
-                    sh "${sshCommand} 'sudo docker tag my-testing-image ${env.dockerHubUser}/my-testing-image:latest'"
-                    sh "${sshCommand} 'sudo docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}'"
-                    sh "${sshCommand} 'sudo docker push ${env.dockerHubUser}/my-testing-image:latest'"
-                    sh "${sshCommand} 'sudo docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}'"
-                    sh "${sshCommand} 'sudo docker pull my-pipeline-image'"
-                    sh "${sshCommand} 'sudo docker-compose down && docker-compose up -d'"}
-                }
+                echo "Pushing the image to docker hub"
+                withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
+                sh "docker tag my-testing-app ${env.dockerHubUser}/my-testing-app:latest"
+                sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
+                sh "docker push ${env.dockerHubUser}/my-testing-app:latest"}
             }
         }
-		
+        stage("DOCKER image-Deploy"){
+            steps {
+                echo "Deploying the container"
+                sh "docker-compose down && docker-compose up -d"
+                
+            }
+        }
     }
 }
