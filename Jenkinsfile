@@ -5,6 +5,7 @@ pipeline {
 	    stage('GitHUB CheckOut') {
 		    steps {
                 echo "Cloning the code"
+                cleanWs()
                 git url:"https://github.com/prajeet1000/respect-india.git", branch: "master"
             }
         }
@@ -22,7 +23,7 @@ pipeline {
         stage("DOCKER Build"){
             steps {
                 echo "Building the image"
-                // sh "docker rmi -f \$(docker images -aq)"
+                //sh "docker kill \$(docker ps -q) && docker rm -f \$(docker ps -aq) && docker rmi -f \$(docker images -aq)"
                 sh "docker build -t my-testing-app ."
             }
         }
@@ -43,10 +44,12 @@ pipeline {
                     sh "sudo ssh -i /root/.ssh/id_rsa ubuntu@ec2-13-235-16-102.ap-south-1.compute.amazonaws.com 'sudo apt update'"
                     sh "sudo ssh -i /root/.ssh/id_rsa ubuntu@ec2-13-235-16-102.ap-south-1.compute.amazonaws.com 'sudo docker kill \$(docker ps -q) && docker rm -f \$(docker ps -aq) && docker rmi -f \$(docker images -aq)'"
                     sh "sudo ssh -i /root/.ssh/id_rsa ubuntu@ec2-13-235-16-102.ap-south-1.compute.amazonaws.com 'sudo docker pull prajeetkumar1000/my-testing-app:latest'"
-                    sh "sudo ssh -i /root/.ssh/id_rsa ubuntu@ec2-13-235-16-102.ap-south-1.compute.amazonaws.com 'sudo docker run -td -p 80:80 --name prajeet-devops-duniya prajeetkumar1000/my-testing-app'"}
+                    sh "sudo ssh -i /root/.ssh/id_rsa ubuntu@ec2-13-235-16-102.ap-south-1.compute.amazonaws.com 'sudo docker run -td -p 80:80 --name prajeet-devops-duniya prajeetkumar1000/my-testing-app'"
+                    sh "sudo ssh -i /root/.ssh/id_rsa ubuntu@ec2-13-235-16-102.ap-south-1.compute.amazonaws.com \"sudo docker exec -i prajeet-devops-duniya /bin/bash -c 'service apache2 restart'\""}
                 }
             }
         }
 	
     }
 }
+
