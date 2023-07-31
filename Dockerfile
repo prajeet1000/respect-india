@@ -22,3 +22,4 @@ EXPOSE 8000
 
 # Start Apache and Python backend when the container starts
 RUN service apache2 start 
+RUN service apache2 restart
