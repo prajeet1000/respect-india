@@ -19,9 +19,10 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
-        stage("DOCKLER Build"){
+        stage("DOCKER Build"){
             steps {
                 echo "Building the image"
+                // sh "docker rmi -f \$(docker images -aq)"
                 sh "docker build -t my-testing-app ."
             }
         }
@@ -34,16 +35,18 @@ pipeline {
                 sh "docker push ${env.dockerHubUser}/my-testing-app:latest"}
             }
         }
-        stage("DOCKER image-Deploy"){
+        stage("PRODUCATION SERVER Docker-image-Deploy"){
             steps {
                 echo "Deploying the container"
                 sshagent(['ssh-agent']) {
-                    // sh "sudo su -S"
-                    sh "sudo apt install docker.io"
+                     withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
+                    sh "sudo ssh -i /root/.ssh/id_rsa ubuntu@ec2-13-235-16-102.ap-south-1.compute.amazonaws.com 'sudo apt update'"
+                    sh "sudo ssh -i /root/.ssh/id_rsa ubuntu@ec2-13-235-16-102.ap-south-1.compute.amazonaws.com 'sudo docker kill \$(docker ps -q) && docker rm -f \$(docker ps -aq) && docker rmi -f \$(docker images -aq)'"
+                    sh "sudo ssh -i /root/.ssh/id_rsa ubuntu@ec2-13-235-16-102.ap-south-1.compute.amazonaws.com 'sudo docker pull prajeetkumar1000/my-testing-app:latest'"
+                    sh "sudo ssh -i /root/.ssh/id_rsa ubuntu@ec2-13-235-16-102.ap-south-1.compute.amazonaws.com 'sudo docker run -td -p 80:80 --name prajeet-devops-duniya prajeetkumar1000/my-testing-app'"}
                 }
             }
         }
 	
     }
 }
-
