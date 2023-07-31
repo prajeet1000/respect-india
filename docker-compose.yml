@@ -1,6 +1,6 @@
 version : "3.3"
 services :
   web :
-     image : prajeetkumar1000/my-testing-image:latest
+     image : docker pull prajeetkumar1000/my-testing-app:latest
      ports :
          - "80:80"
