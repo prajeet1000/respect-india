@@ -23,7 +23,7 @@ pipeline {
         stage("DOCKER Build"){
             steps {
                 echo "Building the image"
-                //sh "docker kill \$(docker ps -q) && docker rm -f \$(docker ps -aq) && docker rmi -f \$(docker images -aq)"
+                sh "docker kill \$(docker ps -q) && docker rm -f \$(docker ps -aq) && docker rmi -f \$(docker images -aq)"
                 sh "docker build -t my-testing-app ."
             }
         }
@@ -52,4 +52,3 @@ pipeline {
 	
     }
 }
-
