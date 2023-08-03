@@ -46,4 +46,5 @@ ENV PORT 80
 EXPOSE 80
 
 # Start Apache and Python backend when the container starts
-CMD ["apache2ctl", "-D", "FOREGROUND"]
+CMD ["apache2ctl", "-D", "DONTFOREGROUND"]
+
