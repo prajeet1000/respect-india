@@ -33,6 +33,10 @@ RUN echo "Header unset X-Powered-By" >> /etc/apache2/conf-available/docker-php.c
     && a2enconf docker-php
 
 
+# Set the ServerName directive
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
+
 
 
 # Clone the code from GitHub repository
