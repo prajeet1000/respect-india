@@ -46,7 +46,6 @@ RUN git clone https://github.com/prajeet1000/respect-india.git
 RUN cp -r respect-india/* /var/www/html/
 
 # Expose ports for Apache and Python backend
-ENV PORT 80
 EXPOSE 80
 
 # Start Apache and Python backend when the container starts
